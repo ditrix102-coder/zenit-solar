@@ -1,11 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/postcss';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    css: {
+      postcss: {
+        plugins: [tailwindcss()]
+      }
+    }
   }
 });
