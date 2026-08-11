@@ -1,0 +1,76 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/soluciones", label: "Soluciones" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/obras", label: "Obras y Testimonios" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/faq", label: "FAQ" },
+];
+---
+
+<nav class="fixed w-full z-50 transition-all duration-300" 
+     x-data="{ mobileMenuOpen: false, scrolled: false }"
+     @scroll.window="scrolled = window.scrollY > 20"
+     :class="scrolled ? 'bg-white dark:bg-slate-800 shadow-md py-3' : 'bg-transparent py-5 border-b border-gray-200 dark:border-slate-800'">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        
+        <!-- LOGOS -->
+        <div class="grid grid-cols-1 grid-rows-1 items-center cursor-pointer h-10 w-auto">
+            <img src="/assets/LOGO-WEB-CLARO.png" alt="Zenit Solar" fetchpriority="high" decoding="async" class="col-start-1 row-start-1 h-10 w-auto transition-opacity duration-300 pointer-events-none" :class="!darkMode ? 'opacity-100' : 'opacity-0'">
+            <img src="/assets/LOGO-WEB-DARK.png" alt="Zenit Solar" fetchpriority="high" decoding="async" class="col-start-1 row-start-1 h-10 w-auto transition-opacity duration-300 pointer-events-none" :class="darkMode ? 'opacity-100' : 'opacity-0'">
+        </div>
+
+        <!-- MENU ESCRITORIO -->
+        <div class="hidden lg:flex items-center gap-7 text-[14px] font-medium text-gray-600 dark:text-gray-300">
+            {links.map(link => (
+                <a href={link.href} 
+                   class:list={[
+                     "transition-colors pb-1",
+                     pathname === link.href ? "text-primary border-b-2 border-primary" : "hover:text-primary dark:hover:text-primary"
+                   ]}>
+                   {link.label}
+                </a>
+            ))}
+            
+            <!-- Botón DarkMode Escritorio -->
+            <button @click="darkMode = !darkMode" aria-label="Cambiar tema oscuro" class="grid w-10 h-10 rounded-lg text-gray-400 hover:text-dark dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors focus:outline-none cursor-pointer" title="Cambiar tema">
+                <span x-show="!darkMode" class="col-start-1 row-start-1 flex items-center justify-center"><i data-lucide="moon" class="w-5 h-5"></i></span>
+                <span x-show="darkMode" x-cloak class="col-start-1 row-start-1 flex items-center justify-center"><i data-lucide="sun" class="w-5 h-5 text-amber-400"></i></span>
+            </button>
+
+            <a href="#contacto" class="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primaryHover transition-colors shadow-sm">Solicitar cotización</a>
+        </div>
+
+        <!-- BOTONES CELULAR -->
+        <div class="flex items-center gap-2 lg:hidden">
+            <button @click="darkMode = !darkMode" aria-label="Alternar tema oscuro" class="w-10 h-10 flex items-center justify-center text-gray-400 dark:text-gray-200">
+                <i x-show="!darkMode" data-lucide="moon" class="w-5 h-5"></i>
+                <i x-show="darkMode" data-lucide="sun" class="w-5 h-5 text-amber-400"></i>
+            </button>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Menú principal" class="text-dark dark:text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MENU CELULAR DESPLEGABLE -->
+    <div x-show="mobileMenuOpen" x-collapse x-cloak class="lg:hidden bg-white dark:bg-slate-800 border-t border-gray-100 dark:border-slate-700 shadow-xl absolute w-full">
+        <div class="flex flex-col px-4 py-6 space-y-4 text-sm font-medium">
+            {links.map(link => (
+                <a href={link.href} 
+                   @click="mobileMenuOpen = false"
+                   class:list={[
+                     "transition-colors",
+                     pathname === link.href ? "text-primary" : "dark:text-gray-200 hover:text-primary"
+                   ]}>
+                   {link.label}
+                </a>
+            ))}
+            <a href="#contacto" @click="mobileMenuOpen = false" class="bg-primary text-white text-center px-5 py-3 rounded-lg mt-4 shadow-sm hover:bg-primaryHover">Solicitar cotización</a>
+        </div>
+    </div>
+</nav>

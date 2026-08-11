@@ -1,0 +1,103 @@
+---
+// Importamos el archivo CSS de Tailwind que Astro generó automáticamente
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+}
+
+const { 
+  title, 
+  description = "Zenit Solar - Soluciones fotovoltaicas integrales para hogares, comercios e industrias. Energía renovable.",
+  image = "/assets/LOGO-WEB-CLARO.png",
+  canonicalURL = Astro.url.href
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth" 
+      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" 
+      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" 
+      :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <ClientRouter />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- dimitri -->
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+
+    <script is:inline>
+        // Prevenir FOUC y forzar modo claro por defecto a menos que el usuario lo haya cambiado
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300 overflow-x-hidden">
+    
+    <slot />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    <script src="https://unpkg.com/lucide@latest" is:inline></script>
+    <script src="https://unpkg.com/alpinejs" defer is:inline></script>
+
+    <script is:inline>
+        function initScripts() {
+            // Inicializar iconos de Lucide
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Inicializar animaciones de AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    once: false,
+                    mirror: true,
+                    offset: 0,
+                    duration: 700,
+                    easing: 'ease-out-cubic'
+                });
+                // Asegurar que AOS detecte los elementos en transiciones
+                setTimeout(function() {
+                    AOS.refresh();
+                }, 100);
+            }
+        }
+
+        // Ejecutar al cargar la página por primera vez
+        document.addEventListener('DOMContentLoaded', initScripts);
+        // Ejecutar en cada transición de vista
+        document.addEventListener('astro:page-load', initScripts);
+    </script>
+</body>
+</html>

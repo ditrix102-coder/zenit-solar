@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Tus colores  */
+  --color-primary: #ff9f00;
+  --color-primary-hover: #e08b00;
+  --color-slate-bg: #f8fafc;
+  --color-dark: #0f1729;
+}
+
+/* Evita el parpadeo de Alpine */
+[x-cloak] { 
+  display: none !important; 
+}

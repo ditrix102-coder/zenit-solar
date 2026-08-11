@@ -1,0 +1,105 @@
+---
+import Layout      from '../layouts/Layout.astro';
+import Navbar      from '../components/Navbar.astro';
+import Contacto    from '../components/Contacto.astro';
+import Footer      from '../components/Footer.astro';
+---
+
+<Layout 
+    title="Soluciones Solares | Zenit Solar" 
+    description="Explora nuestras soluciones en energía solar para hogares, industrias, comercios y el sector rural. Energía limpia y eficiente."
+>
+    <Navbar />
+    <main>
+        
+        <!-- Header de la página -->
+        <section class="pt-32 pb-16 bg-slate-50 dark:bg-[#020618] border-b border-gray-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6">
+                    Soluciones <span class="text-primary">Integrales</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-600 dark:text-gray-400">
+                    Sistemas fotovoltaicos completos y llave en mano. Descubrí cómo nuestra tecnología puede resolver tus necesidades energéticas de forma definitiva y sustentable.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contenido: Tarjetas apiladas sin interacciones complejas -->
+        <section class="py-20 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+                
+                <!-- Tarjeta 1 -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center border border-amber-200 dark:border-amber-700/50">
+                        <i data-lucide="sun" class="w-8 h-8 text-amber-600 dark:text-amber-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Generación Solar</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                            Implementamos paneles solares e inversores de máxima eficiencia para reducir tu factura de electricidad al mínimo posible. Capturamos la energía del sol durante el día y la inyectamos directamente en tu red de consumo interno.
+                        </p>
+                        <ul class="text-gray-500 dark:text-gray-400 space-y-2 text-[15px]">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Ideal para industrias y comercios de alto consumo diurno.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Amortización rápida de la inversión.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-green-100 dark:bg-green-900/40 flex items-center justify-center border border-green-200 dark:border-green-700/50">
+                        <i data-lucide="battery-charging" class="w-8 h-8 text-green-600 dark:text-green-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Almacenamiento de Energía</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                            Instalamos sistemas de baterías (litio o gel) que almacenan la energía sobrante o de la red, garantizando que nunca te quedes sin electricidad. Funcionan como un sistema de respaldo automático (UPS) ante cortes de luz.
+                        </p>
+                        <ul class="text-gray-500 dark:text-gray-400 space-y-2 text-[15px]">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Cero ruido y cero mantenimiento en comparación con generadores a gasoil.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Respaldo ininterrumpido para hogares y servidores.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center border border-cyan-200 dark:border-cyan-700/50">
+                        <i data-lucide="droplet" class="w-8 h-8 text-cyan-600 dark:text-cyan-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Bombeo Solar</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                            Proyectamos bombas de agua solares para el sector agrícola y ganadero, extrayendo agua de pozos profundos o reservorios sin necesidad de acceso a la red eléctrica o uso de combustible. 
+                        </p>
+                        <ul class="text-gray-500 dark:text-gray-400 space-y-2 text-[15px]">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Solución definitiva para zonas rurales aisladas.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Reducción al 100% en el costo operativo de bombeo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-red-100 dark:bg-red-900/40 flex items-center justify-center border border-red-200 dark:border-red-700/50">
+                        <i data-lucide="thermometer" class="w-8 h-8 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Agua Caliente Solar</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                            Termotanques solares diseñados para absorber el calor del sol y calentar agua de forma gratuita, logrando reducir el uso de gas o electricidad para este fin hasta en un 80% anual.
+                        </p>
+                        <ul class="text-gray-500 dark:text-gray-400 space-y-2 text-[15px]">
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Tecnología segura, sustentable y muy económica.</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i> Excelente complemento para viviendas sustentables.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <Contacto  />
+        <Footer    />
+    </main>
+</Layout>

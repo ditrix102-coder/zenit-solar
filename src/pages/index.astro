@@ -1,0 +1,27 @@
+---
+import Layout      from '../layouts/Layout.astro';
+import Navbar      from '../components/Navbar.astro';
+import Hero        from '../components/Hero.astro';
+import Soluciones  from '../components/Soluciones.astro';
+import Servicios   from '../components/Servicios.astro';
+import Proyectos   from '../components/Proyecto.astro';
+import Nosotros    from '../components/Nosotros.astro';
+import Contacto    from '../components/Contacto.astro';
+import Footer      from '../components/Footer.astro';
+---
+
+<Layout 
+    title="Zenit Solar | Energía Limpia para tu Futuro" 
+    description="Zenit Solar ofrece soluciones fotovoltaicas integrales para hogares, comercios e industrias. Descubre cómo ahorrar energía y ayudar al planeta con paneles solares."
+>
+    <Navbar />
+    <main>
+        <Hero />
+        <Soluciones />
+        <Servicios />
+        <Proyectos />
+        <Nosotros  />
+        <Contacto  />
+        <Footer    />
+    </main>
+</Layout>
