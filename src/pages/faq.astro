@@ -11,6 +11,124 @@ import Footer      from '../components/Footer.astro';
 >
     <Navbar />
     <main>
+        
+        <!-- Header de la página -->
+        <section class="pt-32 pb-16 bg-slate-50 dark:bg-[#020618] border-b border-gray-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6">
+                    Preguntas <span class="text-primary">Frecuentes</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-600 dark:text-gray-400">
+                    Resolvemos todas tus dudas sobre la energía solar, nuestras instalaciones y cómo empezar a ahorrar desde el primer día.
+                </p>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section class="py-20 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="space-y-4">
+                    
+                    <!-- Pregunta 1 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Cuánto puedo ahorrar en mi factura de luz?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            Dependiendo del tamaño del sistema instalado y de tus hábitos de consumo, puedes llegar a ahorrar hasta un 80% o más de tu factura eléctrica mensual. Si tienes un medidor bidireccional, incluso puedes inyectar el excedente a la red.
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 2 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Qué mantenimiento requiere un sistema solar?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            El mantenimiento es muy bajo. Consiste principalmente en la limpieza de los paneles solares un par de veces al año para quitar el polvo y asegurar su máxima eficiencia. No tienen piezas móviles, por lo que el desgaste es mínimo.
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 3 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Qué pasa si hay un corte de luz?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            Si tienes un sistema tradicional (On-Grid), por normativa de seguridad el inversor se apagará y te quedarás sin luz. Sin embargo, si tienes un sistema híbrido o con respaldo de baterías (Off-Grid), tus consumos críticos seguirán funcionando normalmente sin interrupciones.
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 4 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Cuánto tiempo dura la instalación?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            La mayoría de las instalaciones residenciales estándar toman entre 2 y 4 días hábiles de trabajo en obra. Para proyectos industriales o comerciales más grandes, el cronograma se ajusta según la complejidad.
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 5 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Los paneles funcionan en días nublados?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            Sí. Los paneles siguen generando energía durante los días nublados o lluviosos gracias a la luz difusa, aunque lo harán a una capacidad menor comparada con un día completamente soleado.
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 6 -->
+                    <details class="group bg-slate-50 dark:bg-[#0f172a] rounded-2xl border border-gray-200 dark:border-slate-800 open:border-primary dark:open:border-primary transition-colors overflow-hidden">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 font-semibold text-lg text-dark dark:text-white marker:content-none">
+                            <span>¿Cuál es la vida útil de los equipos?</span>
+                            <span class="transition group-open:rotate-180">
+                                <i data-lucide="chevron-down" class="w-6 h-6 text-primary"></i>
+                            </span>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                            Los paneles solares tienen una vida útil garantizada de más de 25 años. Los inversores de buena calidad suelen durar entre 10 y 15 años, mientras que las baterías de litio superan los 10 años de uso intensivo.
+                        </div>
+                    </details>
+
+                </div>
+
+                <style>
+                    details > summary { list-style: none; }
+                    details > summary::-webkit-details-marker { display: none; }
+                </style>
+
+            </div>
+        </section>
+
+        <!-- CTA para dudas extra -->
+        <section class="py-16 bg-slate-50 dark:bg-[#020618] border-t border-gray-200 dark:border-slate-800 transition-colors text-center">
+            <div class="max-w-2xl mx-auto px-4">
+                <h3 class="text-2xl font-bold text-dark dark:text-white mb-4">¿Tienes otra duda?</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">Si no encontraste la respuesta a tu pregunta, no dudes en escribirnos. Nuestro equipo técnico está listo para asesorarte.</p>
+                <a href="#contacto" class="inline-flex items-center gap-2 bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-8 py-3 rounded-xl transition-all">
+                    Contactar <i data-lucide="message-circle" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </section>
+
         <Contacto  />
         <Footer    />
     </main>

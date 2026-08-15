@@ -7,10 +7,109 @@ import Footer      from '../components/Footer.astro';
 
 <Layout 
     title="Nuestros Servicios | Zenit Solar" 
-    description="Descubre los servicios de instalación, mantenimiento y consultoría en energía solar que ofrecemos en Zenit Solar."
+    description="Descubre los servicios de instalación de paneles solares para hogares, industrias, comercios y sector rural."
 >
     <Navbar />
     <main>
+        <!-- Header de la página -->
+        <section class="pt-32 pb-16 bg-slate-50 dark:bg-[#020618] border-b border-gray-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6">
+                    Nuestros <span class="text-primary">Servicios</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-600 dark:text-gray-400">
+                    Sistemas a medida para cada necesidad. Llevamos la energía del sol a tu hogar, comercio o proyecto rural.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contenido: Tarjetas apiladas -->
+        <section class="py-20 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+                
+                <!-- Tarjeta Residencial -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center border border-indigo-200 dark:border-indigo-700/50">
+                        <i data-lucide="home" class="w-8 h-8 text-indigo-600 dark:text-indigo-400"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Instalación Residencial</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Diseñamos e instalamos sistemas fotovoltaicos a medida para tu hogar. Reduce drásticamente tu factura de luz, aumenta el valor de tu propiedad y asegura energía continua para tu familia incluso ante cortes de suministro.
+                        </p>
+                        <a href="#contacto" onclick="document.getElementById('selected-service').value='Residencial'; document.getElementById('selected-service-text').innerHTML='<i class=\'fa-solid fa-home text-indigo-600\'></i> Residencial';" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm shadow-indigo-600/20">
+                            Consultar por este servicio <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Rural -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center border border-emerald-200 dark:border-emerald-700/50">
+                        <i data-lucide="tractor" class="w-8 h-8 text-emerald-600 dark:text-emerald-400"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Instalación en Zonas Rurales</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Llevamos energía a donde la red eléctrica no llega. Proveemos sistemas robustos y autónomos ideales para estancias, galpones y viviendas aisladas, garantizando independencia total y funcionamiento continuo en el campo.
+                        </p>
+                        <a href="#contacto" onclick="document.getElementById('selected-service').value='Bombeo Solar / Rural'; document.getElementById('selected-service-text').innerHTML='<i class=\'fa-solid fa-droplet text-indigo-600\'></i> Bombeo Solar / Rural';" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm shadow-emerald-600/20">
+                            Consultar por este servicio <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Comercio -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center border border-amber-200 dark:border-amber-700/50">
+                        <i data-lucide="store" class="w-8 h-8 text-amber-600 dark:text-amber-400"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Instalación para Comercios</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Optimiza los costos operativos de tu local comercial. Dado que la mayor parte del consumo se realiza de día, la energía solar ofrece un retorno de inversión excepcionalmente rápido, mejorando la rentabilidad de tu negocio.
+                        </p>
+                        <a href="#contacto" onclick="document.getElementById('selected-service').value='Comercial / Industrial'; document.getElementById('selected-service-text').innerHTML='<i class=\'fa-solid fa-industry text-indigo-600\'></i> Comercial / Industrial';" class="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm shadow-amber-600/20">
+                            Consultar por este servicio <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Industria -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center border border-cyan-200 dark:border-cyan-700/50">
+                        <i data-lucide="factory" class="w-8 h-8 text-cyan-600 dark:text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Instalación Industrial</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Soluciones a gran escala para plantas industriales y fábricas. Reduce la huella de carbono de tu empresa, cumple con normas ambientales y protege tus operaciones contra los constantes aumentos de tarifas eléctricas.
+                        </p>
+                        <a href="#contacto" onclick="document.getElementById('selected-service').value='Comercial / Industrial'; document.getElementById('selected-service-text').innerHTML='<i class=\'fa-solid fa-industry text-indigo-600\'></i> Comercial / Industrial';" class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm shadow-cyan-600/20">
+                            Consultar por este servicio <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Motorhome -->
+                <div data-aos="fade-up" class="bg-slate-50 dark:bg-[#0f172a] border border-gray-200 dark:border-slate-700 rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 shrink-0 rounded-2xl bg-red-100 dark:bg-red-900/40 flex items-center justify-center border border-red-200 dark:border-red-700/50">
+                        <i data-lucide="car-front" class="w-8 h-8 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <h2 class="text-2xl font-bold text-dark dark:text-white mb-4">Instalación en Motorhome</h2>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Viaja con total libertad y comodidad. Instalamos sistemas solares compactos y altamente eficientes en tu casa rodante o motorhome para alimentar iluminación, heladera y electrodomésticos estés donde estés.
+                        </p>
+                        <a href="#contacto" onclick="document.getElementById('selected-service').value='Otro Servicio'; document.getElementById('selected-service-text').innerHTML='<i class=\'fa-solid fa-ellipsis text-indigo-600\'></i> Otro Servicio';" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shadow-sm shadow-red-600/20">
+                            Consultar por este servicio <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <Contacto  />
         <Footer    />
     </main>

@@ -14,3 +14,36 @@
 [x-cloak] { 
   display: none !important; 
 }
+
+/* 
+  Efecto de transición (Codrops Demo) nativo con Astro View Transitions
+*/
+::view-transition-old(root) {
+  animation: slide-up-out 0.7s cubic-bezier(0.38, 0.05, 0.65, 0.82) both;
+  transform-origin: top center;
+}
+
+::view-transition-new(root) {
+  animation: wipe-up-in 0.7s cubic-bezier(0.38, 0.05, 0.65, 0.82) both;
+  z-index: 10;
+}
+
+@keyframes slide-up-out {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-30vh) scale(0.8);
+    opacity: 0.4;
+  }
+}
+
+@keyframes wipe-up-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+  }
+}

@@ -1,16 +1,154 @@
 ---
 import Layout      from '../layouts/Layout.astro';
 import Navbar      from '../components/Navbar.astro';
+import Proyecto    from '../components/Proyecto.astro';
 import Contacto    from '../components/Contacto.astro';
 import Footer      from '../components/Footer.astro';
 ---
 
 <Layout 
-    title="Obras y Proyectos | Zenit Solar" 
-    description="Revisa nuestro portafolio de obras y proyectos de instalación de paneles solares realizados por Zenit Solar."
+    title="Obras y Testimonios | Zenit Solar" 
+    description="Revisa nuestro portafolio de obras, proyectos de instalación de paneles solares y los testimonios de nuestros clientes."
 >
     <Navbar />
     <main>
+        
+        <!-- Header de la página -->
+        <section class="pt-32 pb-16 bg-slate-50 dark:bg-[#020618] border-b border-gray-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6">
+                    Obras y <span class="text-primary">Casos de Éxito</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-600 dark:text-gray-400">
+                    Más de 120 instalaciones completadas respaldan nuestro compromiso con la transición energética. Descubre cómo transformamos la luz del sol en ahorro y eficiencia.
+                </p>
+            </div>
+        </section>
+
+        <!-- Componente Proyecto (Estadísticas) -->
+        <Proyecto />
+
+        <!-- Galería Extendida -->
+        <section class="py-20 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 data-aos="fade-up" class="text-3xl font-bold text-dark dark:text-white mb-4">Galería de Instalaciones</h2>
+                    <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 dark:text-gray-400">Un vistazo a algunos de nuestros trabajos más recientes en industrias, hogares y el sector rural.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div data-aos="zoom-in" data-aos-delay="0" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Instalación en techo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium text-lg">Residencial On-Grid</span>
+                        </div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="100" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80" alt="Instalación Industrial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium text-lg">Planta Industrial 50kW</span>
+                        </div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="200" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group">
+                        <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=600&q=80" alt="Baterías" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium text-lg">Respaldo de Baterías</span>
+                        </div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="300" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Bombeo Solar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium text-lg">Bombeo Solar Agrícola</span>
+                        </div>
+                    </div>
+                    <div data-aos="zoom-in" data-aos-delay="400" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Comercial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium text-lg">Autoconsumo Comercial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="py-20 bg-slate-50 dark:bg-[#020618] transition-colors border-t border-gray-200 dark:border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 data-aos="fade-up" class="text-3xl font-bold text-dark dark:text-white mb-4">Lo que dicen nuestros clientes</h2>
+                    <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 dark:text-gray-400">Experiencias reales de quienes ya pasaron a la energía solar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div data-aos="fade-up" data-aos-delay="0" class="bg-white dark:bg-[#0f172a] p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 relative">
+                        <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-primary opacity-20"></i>
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 italic">
+                            "Desde que instalamos los paneles en nuestra fábrica, la factura de luz bajó casi un 70%. El equipo de Zenit fue súper profesional y se encargó de todo el papeleo. La mejor inversión."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-dark dark:text-white">MR</div>
+                            <div>
+                                <h4 class="font-bold text-dark dark:text-white leading-tight">Martín R.</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Planta Industrial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-white dark:bg-[#0f172a] p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 relative">
+                        <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-primary opacity-20"></i>
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 italic">
+                            "Vivimos en una zona con cortes frecuentes de luz. Nos instalaron un sistema híbrido con baterías y nos cambió la vida. Ni nos damos cuenta cuando se corta la luz en el barrio."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-dark dark:text-white">CF</div>
+                            <div>
+                                <h4 class="font-bold text-dark dark:text-white leading-tight">Carolina F.</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Residencial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-[#0f172a] p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 relative">
+                        <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-primary opacity-20"></i>
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10 italic">
+                            "El bombeo solar solucionó nuestro problema de agua en el campo. Dejamos de gastar en gasoil y el equipo funciona solo todos los días con el sol. La atención post-venta es de 10."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center font-bold text-dark dark:text-white">JG</div>
+                            <div>
+                                <h4 class="font-bold text-dark dark:text-white leading-tight">Javier G.</h4>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">Productor Agropecuario</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <Contacto  />
         <Footer    />
     </main>

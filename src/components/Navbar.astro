@@ -13,6 +13,7 @@ const links = [
 <nav class="fixed w-full z-50 transition-all duration-300" 
      x-data="{ mobileMenuOpen: false, scrolled: false }"
      @scroll.window="scrolled = window.scrollY > 20"
+     @toggle-mobile-menu.window="mobileMenuOpen = !mobileMenuOpen"
      :class="scrolled ? 'bg-white dark:bg-slate-800 shadow-md py-3' : 'bg-transparent py-5 border-b border-gray-200 dark:border-slate-800'">
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -41,19 +42,7 @@ const links = [
                 <span x-show="darkMode" x-cloak class="col-start-1 row-start-1 flex items-center justify-center"><i data-lucide="sun" class="w-5 h-5 text-amber-400"></i></span>
             </button>
 
-            <a href="#contacto" class="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primaryHover transition-colors shadow-sm">Solicitar cotización</a>
-        </div>
-
-        <!-- BOTONES CELULAR -->
-        <div class="flex items-center gap-2 lg:hidden">
-            <button @click="darkMode = !darkMode" aria-label="Alternar tema oscuro" class="w-10 h-10 flex items-center justify-center text-gray-400 dark:text-gray-200">
-                <i x-show="!darkMode" data-lucide="moon" class="w-5 h-5"></i>
-                <i x-show="darkMode" data-lucide="sun" class="w-5 h-5 text-amber-400"></i>
-            </button>
-            <button @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Menú principal" class="text-dark dark:text-white p-2">
-                <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
-                <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
-            </button>
+            <a href="#contacto" class="bg-primary text-slate-900 px-5 py-2.5 rounded-lg hover:bg-primaryHover transition-colors shadow-sm font-medium">Solicitar cotización</a>
         </div>
     </div>
 
@@ -70,7 +59,7 @@ const links = [
                    {link.label}
                 </a>
             ))}
-            <a href="#contacto" @click="mobileMenuOpen = false" class="bg-primary text-white text-center px-5 py-3 rounded-lg mt-4 shadow-sm hover:bg-primaryHover">Solicitar cotización</a>
+            <a href="#contacto" @click="mobileMenuOpen = false" class="bg-primary text-slate-900 text-center px-5 py-3 rounded-lg mt-4 shadow-sm hover:bg-primaryHover font-medium">Solicitar cotización</a>
         </div>
     </div>
 </nav>

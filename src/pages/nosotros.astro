@@ -1,6 +1,7 @@
 ---
 import Layout      from '../layouts/Layout.astro';
 import Navbar      from '../components/Navbar.astro';
+import Nosotros    from '../components/Nosotros.astro';
 import Contacto    from '../components/Contacto.astro';
 import Footer      from '../components/Footer.astro';
 ---
@@ -11,6 +12,100 @@ import Footer      from '../components/Footer.astro';
 >
     <Navbar />
     <main>
+        
+        <!-- Header de la página -->
+        <section class="pt-32 pb-16 bg-slate-50 dark:bg-[#020618] border-b border-gray-200 dark:border-slate-800 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 data-aos="fade-up" class="text-4xl md:text-5xl font-bold text-dark dark:text-white mb-6">
+                    Nuestra Historia y <span class="text-primary">Misión</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg text-gray-600 dark:text-gray-400">
+                    Trabajamos día a día para que la energía solar sea accesible, eficiente y el pilar del desarrollo sustentable en la región.
+                </p>
+            </div>
+        </section>
+
+        <!-- Componente Nosotros (Estadísticas y Resumen) -->
+        <Nosotros />
+
+        <!-- Misión y Visión -->
+        <section class="py-20 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    
+                    <!-- Misión -->
+                    <div data-aos="fade-right" class="bg-slate-50 dark:bg-[#0f172a] rounded-3xl p-10 md:p-14 border border-gray-100 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-amber-100 dark:bg-amber-900/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        <i data-lucide="target" class="w-12 h-12 text-primary mb-6 relative z-10"></i>
+                        <h3 class="text-3xl font-bold text-dark dark:text-white mb-4 relative z-10">Nuestra Misión</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed relative z-10">
+                            Democratizar el acceso a la energía renovable brindando soluciones tecnológicas de alta calidad, llave en mano y adaptadas a las necesidades específicas de cada hogar, industria y zona rural, maximizando su ahorro económico.
+                        </p>
+                    </div>
+
+                    <!-- Visión -->
+                    <div data-aos="fade-left" class="bg-slate-50 dark:bg-[#0f172a] rounded-3xl p-10 md:p-14 border border-gray-100 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        <i data-lucide="eye" class="w-12 h-12 text-blue-500 mb-6 relative z-10"></i>
+                        <h3 class="text-3xl font-bold text-dark dark:text-white mb-4 relative z-10">Nuestra Visión</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed relative z-10">
+                            Ser los líderes indiscutidos en la transición energética de la región, reconocidos por nuestra innovación, calidad de instalación y servicio post-venta, impulsando un futuro 100% sustentable y libre de emisiones.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Valores -->
+        <section class="py-20 bg-slate-50 dark:bg-[#020618] border-t border-gray-100 dark:border-[#0f172a] transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 data-aos="fade-up" class="text-3xl font-bold text-dark dark:text-white mb-4">Nuestros Valores</h2>
+                    <p data-aos="fade-up" data-aos-delay="100" class="text-gray-500 dark:text-gray-400">Los principios que guían cada uno de nuestros proyectos y relaciones.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div data-aos="fade-up" data-aos-delay="0" class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-[#090f26] rounded-full flex items-center justify-center mb-6 shadow-sm border border-gray-100 dark:border-slate-800">
+                            <i data-lucide="shield-check" class="w-10 h-10 text-primary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark dark:text-white mb-3">Calidad Técnica</h4>
+                        <p class="text-gray-500 dark:text-gray-400">Trabajamos exclusivamente con equipos certificados Tier 1 e inversores de última generación para garantizar la máxima eficiencia.</p>
+                    </div>
+                    
+                    <div data-aos="fade-up" data-aos-delay="100" class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-[#090f26] rounded-full flex items-center justify-center mb-6 shadow-sm border border-gray-100 dark:border-slate-800">
+                            <i data-lucide="handshake" class="w-10 h-10 text-primary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark dark:text-white mb-3">Compromiso Total</h4>
+                        <p class="text-gray-500 dark:text-gray-400">No abandonamos la obra. Desde el diseño hasta la gestión de medidores bidireccionales y soporte 24/7, estamos contigo.</p>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-delay="200" class="text-center">
+                        <div class="w-20 h-20 mx-auto bg-white dark:bg-[#090f26] rounded-full flex items-center justify-center mb-6 shadow-sm border border-gray-100 dark:border-slate-800">
+                            <i data-lucide="leaf" class="w-10 h-10 text-primary"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-dark dark:text-white mb-3">Sustentabilidad</h4>
+                        <p class="text-gray-500 dark:text-gray-400">Cada panel instalado es un paso hacia un planeta más limpio. Nos apasiona reducir la huella de carbono del sector productivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-24 bg-white dark:bg-[#0b1120] transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-bold text-dark dark:text-white mb-6">¿Listo para dar el salto solar?</h2>
+                <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-gray-600 dark:text-gray-400 mb-10">Déjanos tus datos y un ingeniero de nuestro equipo te contactará para evaluar tu caso sin cargo.</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#contacto" class="inline-flex items-center gap-2 bg-primary hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:-translate-y-1">
+                        Contactar Asesor <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <Contacto  />
         <Footer    />
     </main>
