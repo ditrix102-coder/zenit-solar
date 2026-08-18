@@ -4,6 +4,44 @@ import Navbar      from '../components/Navbar.astro';
 import Proyecto    from '../components/Proyecto.astro';
 import Contacto    from '../components/Contacto.astro';
 import Footer      from '../components/Footer.astro';
+
+const galleryProjects = [
+  {
+    title: "Residencial On-Grid",
+    img: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80",
+    alt: "Instalación en techo",
+    colSpan: "",
+    desc: "Vivienda familiar que buscaba reducir su factura eléctrica ante los constantes aumentos. Se propuso e instaló un sistema On-Grid de 3kW, logrando un ahorro mensual del 75% y un retorno de inversión estimado en 4 años."
+  },
+  {
+    title: "Planta Industrial 50kW",
+    img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Instalación Industrial",
+    colSpan: "lg:col-span-2",
+    desc: "Industria metalúrgica con alto consumo diurno que requería estabilizar sus costos operativos. Diseñamos un proyecto a medida de 50kW. La instalación se realizó en el techo de la nave principal sin interrumpir la producción."
+  },
+  {
+    title: "Respaldo de Baterías",
+    img: "https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=600&q=80",
+    alt: "Baterías",
+    colSpan: "",
+    desc: "Cliente en zona suburbana con cortes frecuentes que afectaban su trabajo remoto. Le propusimos un sistema híbrido con banco de baterías de litio, asegurando energía continua 24/7 de forma automática y silenciosa."
+  },
+  {
+    title: "Bombeo Solar Agrícola",
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
+    alt: "Bombeo Solar",
+    colSpan: "lg:col-span-2",
+    desc: "Campo ganadero que necesitaba extraer agua en lotes alejados sin acceso a la red eléctrica y con alto costo en gasoil. Implementamos una bomba solar directa que funciona con el sol, automatizando el llenado de bebederos a costo cero."
+  },
+  {
+    title: "Autoconsumo Comercial",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
+    alt: "Comercial",
+    colSpan: "lg:col-span-2",
+    desc: "Local comercial y oficinas con gran consumo de aire acondicionado en verano. Instalamos paneles solares para cubrir el pico de consumo diurno, mejorando drásticamente la rentabilidad del negocio y su imagen corporativa."
+  }
+];
 ---
 
 <Layout 
@@ -37,39 +75,106 @@ import Footer      from '../components/Footer.astro';
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div data-aos="zoom-in" data-aos-delay="0" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Instalación en techo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-white font-medium text-lg">Residencial On-Grid</span>
+                    {galleryProjects.map((project, index) => (
+                        <div 
+                            data-aos="zoom-in" 
+                            data-aos-delay={index * 100} 
+                            class={`gallery-item rounded-2xl overflow-hidden shadow-sm h-64 relative group cursor-pointer ${project.colSpan}`}
+                            data-img={project.img}
+                            data-title={project.title}
+                            data-desc={project.desc}
+                        >
+                            <img src={project.img} alt={project.alt} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                <span class="text-white font-medium text-lg">{project.title}</span>
+                                <span class="text-white/80 text-sm mt-1 flex items-center gap-1"><i data-lucide="zoom-in" class="w-4 h-4"></i> Ver detalles</span>
+                            </div>
                         </div>
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="100" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
-                        <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80" alt="Instalación Industrial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-white font-medium text-lg">Planta Industrial 50kW</span>
-                        </div>
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="200" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group">
-                        <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=600&q=80" alt="Baterías" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-white font-medium text-lg">Respaldo de Baterías</span>
-                        </div>
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="300" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" alt="Bombeo Solar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-white font-medium text-lg">Bombeo Solar Agrícola</span>
-                        </div>
-                    </div>
-                    <div data-aos="zoom-in" data-aos-delay="400" class="rounded-2xl overflow-hidden shadow-sm h-64 relative group lg:col-span-2">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Comercial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <span class="text-white font-medium text-lg">Autoconsumo Comercial</span>
-                        </div>
-                    </div>
+                    ))}
                 </div>
+
+                <!-- Modal Dialog -->
+                <dialog id="projectModal" class="project-modal-dialog bg-transparent m-auto p-0 backdrop:bg-black/70 backdrop:backdrop-blur-sm rounded-3xl w-11/12 max-w-4xl overflow-hidden">
+                    <div class="project-modal bg-white dark:bg-slate-900 rounded-3xl overflow-x-hidden overflow-y-auto max-h-[85vh] overscroll-contain flex flex-col md:flex-row relative">
+                        <button id="closeModal" class="absolute top-4 right-4 w-10 h-10 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors z-10 backdrop-blur-md">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                        <div class="w-full md:w-1/2 h-64 md:h-auto min-h-[300px]">
+                            <img id="modalImg" src="" alt="Project Image" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                            <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-dark dark:text-white mb-6 leading-tight"></h3>
+                            <p id="modalDesc" class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-8"></p>
+                            <button id="closeModalBtn" class="bg-primary text-slate-900 px-6 py-3 rounded-xl font-medium hover:bg-primary/90 transition-colors self-start shadow-md">
+                                Salir
+                            </button>
+                        </div>
+                    </div>
+                </dialog>
+
+                <script>
+                    function initGalleryModal() {
+                        const modal = document.getElementById('projectModal');
+                        const modalImg = document.getElementById('modalImg');
+                        const modalTitle = document.getElementById('modalTitle');
+                        const modalDesc = document.getElementById('modalDesc');
+                        const closeBtn = document.getElementById('closeModal');
+                        const closeModalBtn = document.getElementById('closeModalBtn');
+                        const items = document.querySelectorAll('.gallery-item');
+
+                        if (!modal) return;
+
+                        items.forEach(item => {
+                            item.addEventListener('click', () => {
+                                modalImg.src = item.dataset.img;
+                                modalTitle.textContent = item.dataset.title;
+                                modalDesc.textContent = item.dataset.desc;
+                                modal.showModal();
+                                document.documentElement.style.overflow = 'hidden';
+                                document.body.style.overflow = 'hidden';
+                                if (typeof lucide !== 'undefined') lucide.createIcons();
+                            });
+                        });
+
+                        const closeDialog = () => {
+                            modal.close();
+                            document.documentElement.style.overflow = '';
+                            document.body.style.overflow = '';
+                        };
+
+                        closeBtn.addEventListener('click', closeDialog);
+                        closeModalBtn.addEventListener('click', closeDialog);
+
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) closeDialog();
+                        });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', initGalleryModal);
+                    document.addEventListener('astro:page-load', initGalleryModal);
+                </script>
             </div>
         </section>
+
+        <style is:global>
+            @keyframes auraGlow {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px) scale(0.95);
+                    box-shadow: 0 0 0px rgba(245, 158, 11, 0);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                    /* Difusa, radiante y suave aura color ámbar (primary) */
+                    box-shadow: 0 0 80px -10px rgba(245, 158, 11, 0.4), 0 0 40px -10px rgba(245, 158, 11, 0.2);
+                }
+            }
+
+            .project-modal-dialog[open] {
+                animation: auraGlow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+        </style>
 
         <!-- Testimonios -->
         <section class="py-20 bg-slate-50 dark:bg-[#020618] transition-colors border-t border-gray-200 dark:border-slate-800">
