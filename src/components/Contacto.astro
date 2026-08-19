@@ -60,7 +60,7 @@
                 
                 <!-- Top Side: Interactive Contact Form -->
                 <section class="p-6 sm:p-8 lg:p-10">
-                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <form id="contact-form" novalidate onsubmit="handleFormSubmit(event)" class="space-y-5">
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
@@ -71,7 +71,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                         <i class="fa-regular fa-user"></i>
                                     </div>
-                                    <input type="text" id="first-name" required placeholder="Ej. Juan"
+                                    <input type="text" id="first-name" placeholder="Ej. Juan" oninput="validateField(this)" onblur="validateField(this)"
                                         class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all duration-200">
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                         <i class="fa-regular fa-user"></i>
                                     </div>
-                                    <input type="text" id="last-name" required placeholder="Ej. Pérez"
+                                    <input type="text" id="last-name" placeholder="Ej. Pérez" oninput="validateField(this)" onblur="validateField(this)"
                                         class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all duration-200">
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                     <i class="fa-regular fa-envelope"></i>
                                 </div>
-                                <input type="email" id="email" required placeholder="tuemail@ejemplo.com"
+                                <input type="email" id="email" placeholder="tuemail@ejemplo.com" oninput="validateField(this)" onblur="validateField(this)"
                                     class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all duration-200">
                             </div>
                         </div>
@@ -111,8 +111,12 @@
                                 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                     <i class="fa-brands fa-whatsapp text-lg text-emerald-600"></i>
                                 </div>
-                                <input type="tel" id="phone" required placeholder="Ej: 2922480475"
+                                <input type="tel" id="phone" placeholder="Ej: 2922 451282" oninput="validateField(this)" onblur="validateField(this)"
                                     class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all duration-200">
+                            </div>
+                            <div class="flex justify-between items-start mt-1.5 px-1 min-h-[20px]">
+                                <p id="phone-hint" class="text-[11px] text-slate-500">Ejemplo: 2922 451282</p>
+                                <p id="phone-error" class="hidden text-[11px] text-red-500 font-medium"></p>
                             </div>
                         </div>
 
@@ -162,7 +166,7 @@
                             <label for="comment" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                                 Comentario o Consulta <span class="text-red-500">*</span>
                             </label>
-                            <textarea id="comment" rows="3" required placeholder="Escribe tu mensaje o detalles de lo que necesitas..."
+                            <textarea id="comment" rows="3" placeholder="Escribe tu mensaje o detalles de lo que necesitas..." oninput="validateField(this)" onblur="validateField(this)"
                                 class="w-full p-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all duration-200 resize-none"></textarea>
                         </div>
 
@@ -284,7 +288,9 @@
         const firstName = document.getElementById('first-name').value.trim();
         const lastName = document.getElementById('last-name').value.trim();
         const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
+        const phoneInput = document.getElementById('phone');
+        const cleanPhone = phoneInput.dataset.cleanNumber || phoneInput.value.replace(/\D/g, '');
+        const phone = cleanPhone.length === 10 ? `+54 9 ${cleanPhone}` : phoneInput.value.trim();
         const service = document.getElementById('selected-service').value;
         const comment = document.getElementById('comment').value.trim();
 
@@ -304,8 +310,123 @@
         };
     }
 
+    function validateField(input) {
+        if (!input) return false;
+        
+        let isValid = false;
+        const val = input.value.trim();
+
+        if (input.id === 'phone') {
+            const errorEl = document.getElementById('phone-error');
+            const hintEl = document.getElementById('phone-hint');
+            let phoneErrorMsg = '';
+            
+            if (val === '') {
+                isValid = false;
+            } else {
+                let digits = val.replace(/\D/g, '');
+
+                // Extraer código de país +549 o +54
+                if (digits.startsWith('549') && digits.length >= 13) {
+                    digits = digits.slice(3);
+                } else if (digits.startsWith('54') && digits.length >= 12) {
+                    digits = digits.slice(2);
+                }
+                
+                // Extraer prefijo 0 (llamadas nacionales)
+                if (digits.startsWith('0')) {
+                    digits = digits.slice(1);
+                }
+
+                // Extraer 9 de celular si lo pusieron sin el 54
+                if (digits.length === 11 && digits.startsWith('9')) {
+                    digits = digits.slice(1);
+                }
+
+                // Detectar y extraer el "15" (solo si es la longitud correcta de 12 dígitos en total)
+                if (digits.length === 12) {
+                    // Códigos de área oficiales: 11, 2xx, 3xx, 2xxx, 3xxx
+                    const match = digits.match(/^(11|2\d{2,3}|3\d{2,3})15(\d{6,8})$/);
+                    if (match && match[1].length + match[2].length === 10) {
+                        digits = match[1] + match[2]; // quitamos el 15
+                    }
+                }
+
+                // Guardar número limpio para el envío final
+                input.dataset.cleanNumber = digits;
+
+                // Validación final de longitud y código de área
+                if (digits.length < 10) {
+                    isValid = false;
+                    phoneErrorMsg = 'El número parece estar incompleto.';
+                } else if (digits.length > 10) {
+                    isValid = false;
+                    phoneErrorMsg = 'El número tiene demasiados dígitos.';
+                } else {
+                    // Exactamente 10 dígitos. Validar que el código de área exista en Argentina
+                    const validAreaCodeRegex = /^(11|2\d{2,3}|3\d{2,3})/;
+                    if (!validAreaCodeRegex.test(digits)) {
+                        isValid = false;
+                        phoneErrorMsg = 'El código de área no parece válido.';
+                    } else {
+                        isValid = true;
+                    }
+                }
+            }
+            
+            if (!isValid && val !== '') {
+                errorEl.innerText = phoneErrorMsg;
+                errorEl.classList.remove('hidden');
+                hintEl.classList.add('hidden');
+            } else {
+                errorEl.classList.add('hidden');
+                hintEl.classList.remove('hidden');
+            }
+
+        } else if (val === '') {
+            isValid = false;
+        } else if (input.type === 'email') {
+            isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        } else {
+            isValid = true;
+        }
+
+        // Limpiar clases previas de bordes y focos
+        input.classList.remove('border-slate-200', 'border-red-500', 'border-green-500', 'focus:ring-indigo-500', 'focus:ring-red-500', 'focus:ring-green-500');
+
+        if (isValid) {
+            input.classList.add('border-green-500', 'focus:ring-green-500');
+        } else {
+            input.classList.add('border-red-500', 'focus:ring-red-500');
+        }
+        
+        return isValid;
+    }
+
     function handleFormSubmit(e) {
         e.preventDefault();
+
+        // Validar todos los campos
+        const inputs = [
+            document.getElementById('first-name'),
+            document.getElementById('last-name'),
+            document.getElementById('email'),
+            document.getElementById('phone'),
+            document.getElementById('comment')
+        ];
+        
+        let allValid = true;
+        inputs.forEach(input => {
+            if (!validateField(input)) {
+                allValid = false;
+            }
+        });
+
+        if (!allValid) {
+            showErrorToast('Por favor completa los campos marcados en rojo.');
+            return;
+        }
+
         const data = buildFormattedMessage();
         document.getElementById('modal-message').innerText = 
             `Hola ${data.firstName}, hemos guardado tus datos para el servicio "${data.service}". Selecciona cómo deseas enviarlo:`;
@@ -331,12 +452,38 @@
 
     function showToast(message) {
         const toast = document.getElementById('toast');
+        const icon = toast.querySelector('i');
+        
+        // Configuración para éxito por defecto
+        icon.className = 'fa-solid fa-circle-check text-emerald-400 text-base';
         document.getElementById('toast-message').innerText = message;
+        
         toast.classList.remove('translate-y-20', 'opacity-0');
         toast.classList.add('translate-y-0', 'opacity-100');
         setTimeout(() => {
             toast.classList.remove('translate-y-0', 'opacity-100');
             toast.classList.add('translate-y-20', 'opacity-0');
+        }, 3000);
+    }
+
+    function showErrorToast(message) {
+        const toast = document.getElementById('toast');
+        const icon = toast.querySelector('i');
+        
+        // Configuración para error
+        icon.className = 'fa-solid fa-circle-exclamation text-red-400 text-base';
+        document.getElementById('toast-message').innerText = message;
+        
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-20', 'opacity-0');
+            
+            // Resetear icono para futuros toasts
+            setTimeout(() => {
+                icon.className = 'fa-solid fa-circle-check text-emerald-400 text-base';
+            }, 300);
         }, 3000);
     }
 
